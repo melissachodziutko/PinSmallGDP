@@ -7,16 +7,23 @@ import pygame
 import random
 
 '''
-Thank you for the feedback by the way! I really appreciated it and implemented the things you suggested. 
-(I was REALLY looking for other things to do with the game so I was very thankful)
+Thank you for the feedback by the way!
+I really appreciated it and implemented the things you suggested.
+(I was REALLY looking for other things to do with the game
+so I was very thankful)
 Author: Melissa Chodziutko
 version 3
-This is a mix of pinball and breakout, where you have two paddles (laid out like the paddles in breakout) 
-and you're trying to hit the ball (moves like a breakout style ball) to pinball-style obstacles for points
-How to play: in this version, move the paddle using your mouse and try to score as many points as possible 
+This is a mix of pinball and breakout, where you have two paddles
+(laid out like the paddles in breakout)
+and you're trying to hit the ball (moves like a breakout style ball)
+to pinball-style obstacles for points
+How to play: in this version, move the paddle using your mouse
+and try to score as many points as possible
 before the ball falls off the bottom of the screen
-What's not working: sometimes you can get caught in the purple bounce at the top of the screen and bounce inside
-New bug: sometimes the game just hard locks. No clue why. I don't know how to fix it, or why it happens.
+What's not working: sometimes you can get caught in the purple bounce at the
+top of the screen and bounce inside
+New bug: sometimes the game just hard locks. No clue why.
+I don't know how to fix it, or why it happens.
 '''
 # define colors
 BLACK = (0, 0, 0)
@@ -515,7 +522,8 @@ def main():
             text = font.render("move the paddle", True, WHITE)
             screen.blit(text, [80, 170])
 
-            text = font.render("Accrue as many points as possible", True, WHITE)
+            text \
+                = font.render("Accrue as many points as possible", True, WHITE)
             screen.blit(text, [15, 300])
 
             text = font.render("Click to start", True, WHITE)
@@ -523,7 +531,7 @@ def main():
         pygame.display.flip()
 
     # -------- Main Program Loop -----------
-    while not done and display_instructions == False:
+    while not done and display_instructions is False:
         for event in pygame.event.get():
             if event.type == pygame.QUIT:
                 done = True
@@ -536,11 +544,15 @@ def main():
             move.update()
             # See if the ball hits the player paddle
             if pygame.sprite.spritecollide(player, balls, False):
-                # diff just means where the ball will bounce to depending on where the paddle hit it
-                diff = (player.rect.x + player.width / 2) - (ball.rect.x + ball.width / 2)
+                ''' diff just means where the ball will bounce to
+                depending on where the paddle hit it'''
+                diff = (player.rect.x + player.width / 2) \
+                    - (ball.rect.x + ball.width / 2)
 
-                # update the ball's y position if the ball hits the edge of the paddle
-                ball.rect.y = screen.get_height() - player.rect.height - ball.rect.height - 1
+                ''' update the ball's y position if the ball
+                hits the edge of the paddle'''
+                ball.rect.y = screen.get_height() \
+                    - player.rect.height - ball.rect.height - 1
                 ball.bounce(diff)
                 SE.play()
                 light.image.fill(YELLOW)
